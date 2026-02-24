@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 
 // A small helper component to handle the animation logic
-const AnimatedNumber = ({ value }) => {
+const AnimatedNumber = ({ value }: { value: string }) => {
     const [displayValue, setDisplayValue] = useState(0);
-    
+
     // Parse the numeric part and any suffix/prefix
     const numericValue = parseFloat(value.replace(/[^0-9.]/g, "")) || 0;
     const prefix = value.match(/^[^\d]+/)?.[0] || "";
@@ -13,11 +13,11 @@ const AnimatedNumber = ({ value }) => {
     const hasDecimals = value.includes(".");
 
     useEffect(() => {
-        let startTimestamp = null;
-        let animationFrameId = null;
+        let startTimestamp: number | null = null;
+        let animationFrameId: number | null = null;
         const duration = 2000; // 2 seconds animation
 
-        const step = (timestamp) => {
+        const step = (timestamp: number) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
@@ -25,7 +25,7 @@ const AnimatedNumber = ({ value }) => {
                 // Smooth "ease-out" count up (Looks more professional)
                 const easeOutProgress = 1 - Math.pow(1 - progress, 4);
                 setDisplayValue(numericValue * easeOutProgress);
-                
+
                 // If you strictly want the random scramble instead, uncomment below and delete the 2 lines above:
                 // setDisplayValue(Math.random() * numericValue);
 
@@ -49,8 +49,8 @@ const AnimatedNumber = ({ value }) => {
     return (
         <span>
             {prefix}
-            {hasDecimals 
-                ? displayValue.toFixed(1) 
+            {hasDecimals
+                ? displayValue.toFixed(1)
                 : Math.floor(displayValue).toLocaleString()}
             {suffix}
         </span>
