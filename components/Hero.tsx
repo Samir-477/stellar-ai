@@ -417,15 +417,11 @@ export default function Hero() {
     loadingRef.current = false;
   }, []);
 
-  // Run loading only on the very first visit per session
+  // Run loading on every page load/refresh
   useEffect(() => {
     if (!initialLoadDone.current) {
       initialLoadDone.current = true;
-      const alreadyLoaded = sessionStorage.getItem("hero-loaded");
-      if (!alreadyLoaded) {
-        sessionStorage.setItem("hero-loaded", "true");
-        runLoadingSequence("report");
-      }
+      runLoadingSequence("report");
     }
   }, [runLoadingSequence]);
 
