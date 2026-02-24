@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6a4"/>
+      <stop offset="50%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)"/>
+  <!-- Lightning bolt -->
+  <path d="M35.5 12L22 34h10l-3.5 18L42 30H32l3.5-18z" fill="white" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+</svg>
